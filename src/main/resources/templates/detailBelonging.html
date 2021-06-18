@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div th:replace="layout/template-layout :: headerAsset"></div>
+
+<!--Navbar-->
+<nav th:replace="layout/template-layout :: navbar"></nav>
+
+<div class="container">
+    <div class="row ">
+        <div class="col-12">
+            <div class="card mt-4">
+                <div class="card-header d-flex align-items-center">
+                    <div class="w-100 d-flex justify-content-between align-items-center">
+                        <h5>Person Detail</h5>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table  class="table">
+                        <thead>
+                            <tr>
+                                <td>Belonging Id</td>
+                                <td>Item Name</td>
+                                <td>Quantity</td>
+                                <td>Owner</td>
+                                <td>Gender</td>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td th:text="${belonging.id}"></td>
+                                <td th:text="${belonging.name}"></td>
+                                <td th:text="${belonging.quantity}"></td>
+                                <td th:text="${belonging.person.firstName}+' '+${belonging.person.lastName}"></td>
+                                <td th:text="${belonging.person.gender}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="layout/template-layout :: asset"></div>
+
+<html>
+    <head>
+        <title>KSM - Detail Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+    </body>
+</html>

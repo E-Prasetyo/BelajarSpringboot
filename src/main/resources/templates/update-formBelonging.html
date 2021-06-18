@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div th:replace="layout/template-layout :: headerAsset"></div>
+
+<!--Navbar-->
+<nav th:replace="layout/template-layout :: navbar"></nav>
+
+<!--Content-->
+<div class="container">
+    <div class="row ">
+        <div class="col-12">
+            <div class="card mt-4">
+                <div class="card-header d-flex align-items-center">
+                    <div class="w-100 d-flex justify-content-between align-items-center">
+                        <h5>Belonging Form</h5>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form class="needs-validation" novalidate th:action="@{/belonging/{ids}/update (ids=${belonging.id})}" th:object="${belonging}" method="POST">
+                        <div class="input-group mb-3">
+                            <label class="me-4">Item Name&nbsp;</label>
+                            <input type="text" class="form-control" name="name" id="name" th:field="*{name}" required/>
+                            <div class="invalid-feedback">
+                                Item name harus diisi.
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <label class="me-5">Quantity</label>
+                            <input type="text" class="form-control" name="quantity" id="quantity" th:field="*{quantity}" required/>                                    
+                            <div class="invalid-feedback">
+                                Quantity haru diisi.
+                            </div>
+                        </div>
+                        
+                         <div class="input-group mb-3">
+                            <label class="me-5">Owner&nbsp</label>
+                             <select class="form-select" id="validationCustom04" th:name="id" required>
+                                 <option selected disabled th:text="${belonging.person.firstName}"></option>
+                                <option th:each="person:${persons}" th:value="${person.id}" th:text="${person.firstName}" th:name="id"></option>
+                            </select>  
+                            <div class="invalid-feedback">
+                                First name haru diisi.
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="layout/template-layout :: asset"></div>
